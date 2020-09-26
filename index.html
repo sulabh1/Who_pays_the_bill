@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link href="https://fonts.googleapis.com/css?family=Anton|Roboto:300,400,500" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <script src="js/vue.js"></script>
+   <title>Who pays the bill</title>
+</head>
+<body>
+    <div id="app">
+
+       <div id="names" class="container" v-if="state">
+
+          <h1>Who pays the bill</h1>
+          <div class="input_container">
+             <input type="text" v-model="inputName">
+             <button @click="addNameToList">ADD</button>
+          </div>
+          <div class="error_label" v-if="showError">
+               You must enter the name !!!
+          </div>
+          <div class ="list_of_names">
+            <div 
+            v-for="(name, index) in names" :key="index" @click="removeName(index)">
+               {{ name }}
+               </div>
+          </div>
+          <div v-if="names.length > 1"> 
+             <div class="action_button" @click="showResult">
+                Check the looser
+             </div>
+          </div>
+       </div>
+
+       <div id="result" class="container" v-if="!state">
+
+          <div class="result_container">
+
+             <h1>The looser is</h1>
+             <div class="result_value">{{ result }}</div>
+             <div class="action_button" @click="resetApp">Start again</div>
+
+          </div>
+       </div>
+        
+    </div>
+    
+        
+    </div>
+ </body>
+ 
+ <script src="js/main.js"></script>
+</html>
